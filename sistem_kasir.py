@@ -57,7 +57,7 @@ class Produk:
 class Kasir:
     def __init__(self, nama_kasir):
         self.nama_kasir = nama_kasir
-        self.__keranjang = []  # private
+        self.__keranjang = []  
 
     def tambah_item(self, produk, jumlah):
         try:
@@ -84,7 +84,7 @@ class Kasir:
 if __name__ == "__main__":
     p1 = Produk("Indomie", 3500, 20)
     p2 = Produk("Teh Botol", 5000, 15)
-    p3 = Produk.dari_string("Roti, 8000, 5")  # pakai class method
+    p3 = Produk.dari_string("Roti, 8000, 5") 
 
     print("Daftar produk:")
     for p in (p1, p2, p3):
