@@ -1,18 +1,16 @@
 """Sistem Kasir Sederhana - UTS Pemrograman Berorientasi Objek"""
 
-
 class Produk:
-    jumlah_produk = 0  # class attribute
+    jumlah_produk = 0  
 
-    def __init__(self, nama, harga, stok):  # constructor
-        self.nama = nama          # attribute
-        self.__harga = 0          # private (encapsulation)
+    def __init__(self, nama, harga, stok):
+        self.nama = nama        
+        self.__harga = 0          
         self.__stok = 0
-        self.harga = harga        # lewat setter (ada validasi)
+        self.harga = harga        
         self.stok = stok
         Produk.jumlah_produk += 1
 
-    # ---- property / setter ----
     @property
     def harga(self):
         return self.__harga
@@ -33,13 +31,11 @@ class Produk:
             raise ValueError("Stok tidak boleh negatif")
         self.__stok = nilai
 
-    # ---- method biasa ----
     def kurangi_stok(self, jumlah):
         if jumlah > self.__stok:
             raise ValueError(f"Stok {self.nama} tidak cukup (sisa {self.__stok})")
         self.__stok -= jumlah
 
-    # ---- class method ----
     @classmethod
     def dari_string(cls, data):
         """Buat objek dari string 'nama,harga,stok'"""
@@ -50,7 +46,6 @@ class Produk:
     def total_produk(cls):
         return cls.jumlah_produk
 
-    # ---- static method ----
     @staticmethod
     def format_rupiah(angka):
         return f"Rp{angka:,.0f}".replace(",", ".")
@@ -87,7 +82,6 @@ class Kasir:
 
 
 if __name__ == "__main__":
-    # membuat object
     p1 = Produk("Indomie", 3500, 20)
     p2 = Produk("Teh Botol", 5000, 15)
     p3 = Produk.dari_string("Roti, 8000, 5")  # pakai class method
@@ -104,6 +98,5 @@ if __name__ == "__main__":
     kasir.tambah_item(p3, 2)
     kasir.cetak_struk()
 
-    # demo setter
     p1.harga = 4000
     print("\nHarga Indomie baru:", Produk.format_rupiah(p1.harga))
